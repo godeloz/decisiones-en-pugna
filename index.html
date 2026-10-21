@@ -266,6 +266,65 @@ em{color:var(--carmin);font-style:normal;font-weight:600}
 .progreso{font-family:'Bebas Neue',sans-serif;letter-spacing:.18em;font-size:.8rem;color:var(--tinta-tenue);text-align:center;margin-bottom:14px}
 
 /* ---------- desktop ---------- */
+
+/* ================= V2 ================= */
+.eyebrow.centrada{text-align:center;font-size:clamp(1.5rem,6.5vw,2rem);letter-spacing:.22em;margin-bottom:24px}
+
+/* barra de progreso de cualidades */
+.barra-cual{position:sticky;top:0;z-index:20;margin:0 -20px 20px;padding:12px 20px 10px;background:rgba(242,237,227,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.barra-cual .segs{display:flex;gap:6px;max-width:420px;margin:0 auto}
+.barra-cual .seg{flex:1;height:8px;border-radius:999px;background:rgba(22,34,31,.12);transition:background .35s,transform .35s}
+.barra-cual .seg.lleno{background:var(--teal-viva)}
+.barra-cual.completa .seg{transform:scaleY(1.25)}
+.barra-cual .lbl{font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:.95rem;color:var(--oro-tinta);text-align:center;margin-top:7px}
+.barra-cual.completa .lbl{color:var(--teal)}
+.barra-cual .lbl.aviso{color:var(--carmin)}
+
+/* panel que emerge */
+.velo{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(242,237,227,.74);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.velo.abierto{opacity:1;visibility:visible}
+.panel{background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;padding:30px 24px 26px;max-width:420px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(22,34,31,.25);transform:translateY(34px) scale(.9);opacity:0;transition:transform .5s cubic-bezier(.2,1.35,.4,1),opacity .3s}
+.velo.abierto .panel{transform:none;opacity:1}
+.panel h3{color:var(--teal);margin-bottom:4px}
+.panel .etiquetas{justify-content:center;margin:14px 0 24px}
+.panel .acciones{margin-top:0;flex-direction:column;align-items:stretch;gap:10px}
+
+/* regla de las cualidades */
+.regla-cual{font-size:.98rem}
+
+/* nota de la sala */
+.nota-sala{font-style:italic;color:var(--carmin);border-left:3px solid var(--carmin);padding-left:14px;margin-top:4px}
+
+/* franja con tus cualidades (sala y ficha) */
+.mano{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(242,237,227,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--linea);padding:10px 16px calc(12px + env(safe-area-inset-bottom));display:none;box-shadow:0 -6px 20px rgba(22,34,31,.06)}
+.mano.visible{display:block}
+html.con-mano{scroll-padding-bottom:150px}
+html.con-mano .wrap{padding-bottom:230px}
+.mano-int{max-width:900px;margin:0 auto}
+.mano-tit{font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:.72rem;color:var(--tinta-tenue);text-align:center;margin-bottom:7px}
+.mano-chips{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.mano-chip{font-family:'Bebas Neue',sans-serif;font-size:.86rem;letter-spacing:.08em;padding:6px 12px;border-radius:999px;border:1px solid var(--teal-viva);background:var(--teal-tenue);color:var(--teal);cursor:pointer;transition:background .2s,color .2s}
+.mano-chip[aria-expanded="true"]{background:var(--teal-viva);color:#fff}
+.mano-chip:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.mano-des{font-size:.9rem;line-height:1.5;color:var(--tinta);max-width:560px;margin:10px auto 2px;text-align:center}
+.mano-des b{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.08em;color:var(--teal)}
+
+/* etiqueta de terreno en la confrontación */
+.opcion .etq.ajena{color:var(--tinta-tenue)}
+.opcion .etq.ajena b{color:var(--tinta-tenue)}
+.opcion .etq.mia b{color:var(--teal);background:var(--teal-tenue);padding:1px 8px;border-radius:999px}
+
+/* barra de inclinación con terreno */
+.barra2{position:relative;height:6px;background:rgba(22,34,31,.08);border-radius:999px;margin-top:9px}
+.barra2 .t{position:absolute;top:0;bottom:0;width:0;border-radius:999px;transition:width .9s ease}
+.barra2 .base{left:0;background:var(--carmin)}
+.resultado-fila.si .barra2 .base{background:var(--oro)}
+.barra2 .extra{background:var(--teal-viva)}
+.barra2 .perdida{background:repeating-linear-gradient(90deg,rgba(22,34,31,.30) 0 3px,transparent 3px 6px)}
+.barra2 .umbral{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--tinta);opacity:.5;border-radius:2px}
+.resultado-fila .est .terreno{color:var(--teal)}
+.leyenda-barra{font-size:.82rem;color:var(--tinta-tenue);text-align:center;margin-top:14px}
+
 @media(min-width:640px){
   body{font-size:17px}
   .rejilla{grid-template-columns:repeat(3,1fr);gap:14px}
@@ -303,7 +362,7 @@ em{color:var(--carmin);font-style:normal;font-weight:600}
 
 <!-- 2 · QUIÉN ERES -->
 <section class="pantalla" id="p-quien">
-  <span class="eyebrow teal">Tu lugar en la mesa</span>
+  <span class="eyebrow teal centrada">Tu lugar en la mesa</span>
   <div class="yo-hero">
     <img class="av" src="img/jurados/jurado-08-inconforme.png" alt="Jurado 8" onerror="falla(this,'08')">
     <div>
@@ -327,10 +386,16 @@ em{color:var(--carmin);font-style:normal;font-weight:600}
 
 <!-- 3 · CUALIDADES -->
 <section class="pantalla" id="p-cualidades">
+  <div class="barra-cual" id="barra-cual" aria-live="polite">
+    <div class="segs"><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+    <div class="lbl" id="contador-cual">0 de 3 elegidas</div>
+  </div>
   <span class="eyebrow teal">Personaliza tu jurado</span>
   <h2>Elige tres cualidades</h2>
   <p class="dim">Cada una tiene una cara útil y una cara riesgosa. Elegir tres no es armar un héroe sin fisuras: es decidir con qué herramientas — y con qué puntos ciegos — entras al cuarto.</p>
-  <div class="contador" id="contador-cual">0 de 3 elegidas</div>
+  <div class="bloque teal regla-cual">
+    <p>Cada contraargumento que uses en la sala nace de una de estas cualidades. Lo que digas desde las tuyas entra con el peso de lo que eres; lo que tomes prestado de otra llega con menos fuerza. Con los jurados más duros, solo alcanza el argumento justo dicho desde una cualidad propia.</p>
+  </div>
   <div class="cualidades" id="lista-cualidades"></div>
   <div class="acciones"><button class="btn" id="btn-cual" disabled onclick="confirmarCualidades()">Entrar al caso</button></div>
 </section>
@@ -375,6 +440,7 @@ em{color:var(--carmin);font-style:normal;font-weight:600}
   <span class="eyebrow carmin">Los once que votaron a favor</span>
   <h2>La sala</h2>
   <p class="dim">Abre cada perfil para leer quién es y con qué argumento votó, o elige directamente desde la rejilla. Necesitas exactamente siete, y tienen que cambiar los siete.</p>
+  <p class="nota-sala">A los más duros solo los mueve el argumento justo, dicho desde lo que eres.</p>
   <div class="rejilla" id="rejilla-sala"></div>
   <div class="contador" id="contador-sel">0 de 7 elegidos</div>
   <div class="acciones"><button class="btn" id="btn-sel" disabled onclick="iniciarConfrontacion()">Confrontar a los siete</button></div>
@@ -419,6 +485,7 @@ em{color:var(--carmin);font-style:normal;font-weight:600}
     <p class="dim" id="voto-glosa" style="max-width:42ch;margin:0 auto"></p>
   </div>
   <div class="bloque" style="margin-top:26px" id="voto-detalle"></div>
+  <p class="leyenda-barra">La línea oscura marca hasta dónde había que llegar con cada uno.</p>
   <div class="acciones"><button class="btn" onclick="mostrarDebrief()">Ver tu lectura</button></div>
 </section>
 
@@ -434,9 +501,32 @@ em{color:var(--carmin);font-style:normal;font-weight:600}
 
 </div>
 
+<!-- V2 · panel que emerge al completar las cualidades -->
+<div class="velo" id="velo-cual" onclick="if(event.target===this)cambiarCualidades()">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-cual-tit">
+    <span class="eyebrow teal">Tu mano está completa</span>
+    <h3 id="panel-cual-tit">Entras al cuarto con</h3>
+    <div class="etiquetas" id="panel-cual-chips"></div>
+    <div class="acciones">
+      <button class="btn oro" id="btn-panel-entrar" onclick="cerrarPanel();confirmarCualidades()">Entrar al caso</button>
+      <button class="btn fantasma" onclick="cambiarCualidades()">Cambiar cualidades</button>
+    </div>
+  </div>
+</div>
+
+<!-- V2 · franja con tus cualidades en la sala y la ficha -->
+<div class="mano" id="mano" aria-label="Tus cualidades">
+  <div class="mano-int">
+    <div class="mano-tit">Tus cualidades · toca una para releerla</div>
+    <div class="mano-chips" id="mano-chips"></div>
+    <div class="mano-des" id="mano-des" hidden></div>
+  </div>
+</div>
+
 <script>
 /* =========================================================
-   12 DECISIONES EN PUGNA · Liderazgo en escena
+   12 DECISIONES EN PUGNA · Liderazgo en escena · V2
+   V2: las cualidades pesan (tu terreno suma, lo prestado resta)
    App estática · sin dependencias · GitHub Pages ready
    Imágenes esperadas en: img/jurados/jurado-NN-nombre.png
    ========================================================= */
@@ -469,6 +559,15 @@ const CUAL=Object.fromEntries(CUALIDADES.map(c=>[c.id,c.nom]));
 /* ---------- UMBRALES ---------- */
 const UMBRAL={baja:50,media:75,alta:95};
 
+/* ---------- PESO DEL TERRENO (V2) ----------
+   Lo que dices desde una cualidad tuya suma; lo prestado resta.
+   Con estos valores: baja = llave o media verdad de cualquier terreno;
+   media = llave de cualquier terreno o media verdad propia;
+   alta = solo la llave propia; la tentación (30) nunca alcanza. */
+const PESO={propio:15,prestado:-10};
+const ESCALA=120; // tope visual de la barra de inclinación
+const pesa=(v,propia)=>v+(propia?PESO.propio:PESO.prestado);
+
 /* ---------- DILEMAS ----------
    Estructura lista para sumar más casos.
    El botón "Cambiar de caso" aparece solo si hay más de uno. */
@@ -494,99 +593,99 @@ const DILEMAS=[{
    arg:'Para él la pregunta ya estaba resuelta antes de sentarse a discutirla: hubo convocatoria según el reglamento, hubo firmas, hubo acta. Objetar ahora, sin una irregularidad documentada, le suena a falta de respeto al trabajo que el comité ya hizo.',
    cita:'Si reabrimos cada acuerdo que a alguien le incomoda, no vamos a certificar nada nunca.',
    ops:[
-    {v:30,c:'empatia',t:'Pedirle más tiempo por consideración hacia la comunidad.',fb:'Apela a la compasión general. Para él el proceso ya se cumplió: no mueve nada.'},
-    {v:60,c:'paciencia',t:'Señalarle que un comité serio revisa dos veces antes de cerrar un caso irreversible.',fb:'Toca su identidad de hacer las cosas bien. Duda, no cede.'},
-    {v:100,c:'honestidad',t:'Recordarle que su firma no certifica que hubo una reunión: certifica que hubo una decisión justa. Su rol no es cerrar el expediente, es garantizar que el proceso fue limpio.',fb:'Ataca su falla exacta: confundir orden con justicia.'}
+    {v:30,c:'empatia',t:"Pedirle unos días más por consideración con la comunidad, para que nadie sienta que se decidió a la carrera algo tan delicado.",fb:"Apela a la compasión en general. Para él el proceso ya se cumplió: no mueve nada."},
+    {v:60,c:'paciencia',t:"Recordarle que un comité serio revisa dos veces antes de cerrar algo irreversible, y repasar con él los tres huecos, uno por uno.",fb:"Toca su idea de hacer las cosas bien y lo deja en el borde. El repaso también le suena a desconfiar del trabajo hecho."},
+    {v:100,c:'puentes',t:"Proponerle un cierre ordenado: agendar la verificación de los tres puntos y firmar después, con un acta de la que nadie pueda dudar.",fb:"Le das el orden que necesita, puesto al servicio de lo justo. Cierra el expediente sin cerrarlo mal."}
    ]},
   {n:2,id:'eco',nom:'El Eco',img:'jurado-02-eco.png',dif:'baja',
    perfil:'Escucha bien, no necesita tener la razón, no llega cargado de ego. Pero vota con la última voz fuerte que escuchó, no con lo que él mismo piensa. Su humildad esconde un sesgo.',
    arg:'Nadie más objetó cuando se presentó el caso la primera vez, y once personas revisando algo con cuidado le parece garantía suficiente. Su voto no nace de convicción propia: nace de no encontrar razón para separarse del grupo.',
    cita:'Si nadie más lo vio, será que no había nada que ver.',
    ops:[
-    {v:30,c:'conviccion',t:'Pedirle que piense por sí mismo.',fb:'Demasiado abstracto. No tiene de dónde agarrarse.'},
-    {v:60,c:'firmeza',t:'Recordarle que la mayoría también se puede equivocar.',fb:'Lo hace dudar, sin un hecho concreto al que aferrarse.'},
-    {v:100,c:'escucha',t:'Señalarle un dato puntual que nadie más ha nombrado: la ausencia sin explicar de una familia el día de la firma.',fb:'Le das algo propio en qué apoyarse. Deja de seguir, empieza a sostener.'}
+    {v:30,c:'puentes',t:"Proponer al grupo un punto intermedio en el que todos puedan sentirse cómodos, sin que nadie tenga que dar su brazo a torcer del todo.",fb:"El grupo no se mueve, y él se queda donde está el grupo."},
+    {v:60,c:'limite',t:"Dejarle claro que tú no vas a cambiar tu voto, para que sepa que en este cuarto ya hay una segunda voz que no piensa ceder.",fb:"Se inclina hacia la voz más firme. Sigue votando con quien suena más fuerte; esta vez eras tú."},
+    {v:100,c:'paciencia',t:"Darle un solo dato y dejarlo pesar: una familia que se opuso no estuvo en la firma. No sumar nada más hasta que él mismo lo repita.",fb:"Le das algo propio en qué apoyarse, y tiempo para hacerlo suyo. Deja de seguir y empieza a sostener."}
    ]},
   {n:3,id:'herido',nom:'El Herido',img:'jurado-03-herido.png',dif:'alta',
    perfil:'El más apasionado del cuarto, el que se niega a fingir consenso por incomodidad ajena. Pero arrastra una herida vieja que proyecta sobre cualquier decisión que se le parezca. Cuando pierde terreno, sube el volumen en vez de mejorar el argumento.',
    arg:'Vivió en carne propia lo que cuesta que un proyecto se caiga por objeciones de forma que después resultaron no ser nada: cuidado disfrazado de burocracia, decidido por gente que nunca preguntó lo que él de verdad necesitaba.',
    cita:'Ellos firmaron. Son capaces de decidir solos. Dejen de tratarlos como si no supieran lo que hacen.',
    ops:[
-    {v:30,c:'honestidad',t:'Exponer el dato técnico del plazo de seis días.',fb:'Frío. No toca lo que realmente lo mueve.'},
-    {v:60,c:'firmeza',t:'Decirle que preguntar por el consentimiento no es paternalismo, es garantía de derecho.',fb:'Lo confrontas directo: se pone a la defensiva.'},
-    {v:100,c:'empatia',t:'Reconocer frente a él que tú también crees que la comunidad decide sola, y que por eso mismo hay que asegurarse de que la ausencia de una familia y la falta de traducción no le hayan robado esa decisión a alguien.',fb:'No peleas contra su valor: lo usas a favor. Mismo principio, conclusión distinta.'}
+    {v:30,c:'honestidad',t:"Poner sobre la mesa el dato del plazo: seis días no alcanzan para entender un contrato así, y eso lo diría cualquier abogado.",fb:"Frío. No toca lo que de verdad lo mueve, y le confirma que esto es asunto de abogados."},
+    {v:60,c:'conviccion',t:"Volver a tu frase de apertura: preguntar por el consentimiento es proteger un derecho, y eso nadie debería leerlo como tutela.",fb:"Es cierto y lo sabe, pero lo oye como un sermón. Se pone a la defensiva."},
+    {v:100,c:'empatia',t:"Decirle que tú también crees que la comunidad sabe decidir sola, y que por eso mismo importa que nadie le haya quitado esa decisión.",fb:"Tomas su propio principio y lo llevas a otra conclusión. Se siente oído antes de sentirse corregido."}
    ]},
   {n:4,id:'analista',nom:'El Analista',img:'jurado-04-analista.png',dif:'media',
    perfil:'Frío, riguroso, inmune a la presión social. No cambia porque el cuarto se incomode, solo porque los datos cambien. Su falla es tratar la objetividad como coartada: pesa cada dato por igual, sin preguntarse cuánto costaría estar equivocado.',
    arg:'El estudio técnico es sólido, el marco legal se cumplió en el papel, no hay irregularidad documentada que invalide formalmente la firma. Sin una violación clara y medible, para él no hay caso.',
    cita:'Muéstrenme la norma que se violó. Una, concreta.',
    ops:[
-    {v:30,c:'empatia',t:'Apelar a la ética de proteger comunidades vulnerables.',fb:'Valorativo, no cuantificable. No lo mueve.'},
-    {v:60,c:'honestidad',t:'Señalar el plazo corto como irregularidad menor.',fb:'La registra, pero puede racionalizarla como dentro del margen legal.'},
-    {v:100,c:'largoplazo',t:'Preguntarle cuánto le costaría al comité, en riesgo legal y reputacional futuro, certificar un consentimiento que no puede demostrarse informado.',fb:'Lo obligas a calcular el costo de estar equivocado: su punto ciego exacto.'}
+    {v:30,c:'vulnerabilidad',t:"Admitir que no tienes una norma concreta para mostrarle, y pedirle que confíe en que algo en este proceso no se hizo bien.",fb:"Le das la razón en lo único que le importaba. Sin norma, para él no hay caso."},
+    {v:60,c:'honestidad',t:"Señalarle que firmar seis días después de recibir la propuesta es una irregularidad de plazo, aunque ninguna norma fije un mínimo.",fb:"La registra y queda en el borde. Todavía puede racionalizarla como algo dentro del margen legal."},
+    {v:100,c:'largoplazo',t:"Preguntarle cuánto le costaría al comité, en demandas y en reputación, certificar un consentimiento que después no pueda demostrar.",fb:"Lo obligas a calcular el costo de estar equivocado: su punto ciego exacto."}
    ]},
   {n:5,id:'conocedor',nom:'El Conocedor',img:'jurado-05-conocedor.png',dif:'media',
    perfil:'Sabe cosas que nadie más en el cuarto sabe, no por título sino por haberlas vivido. Se niega a que descarten a alguien por su origen. Pero se toma cada generalización como algo personal y se retrae justo cuando su conocimiento sería más útil.',
    arg:'Ha visto de cerca lo poco que suele llegarle a una comunidad como Wenko. La escuela, el camino, el empleo estable no son detalles menores para él. Frenar el acuerdo por un tecnicismo le suena a la misma historia de siempre.',
    cita:'Alguien de afuera decidiendo, en nombre del cuidado, que todavía no merecen lo que se les ofrece.',
    ops:[
-    {v:30,c:'honestidad',t:'Usar el argumento legal seco sobre el plazo.',fb:'No lo toca. Para él sigue siendo que les están quitando una oportunidad.'},
-    {v:60,c:'puentes',t:'Señalar que frenar no es negar la oportunidad, es asegurar que la reciban en sus propios términos.',fb:'Lo empieza a mover. No del todo.'},
-    {v:100,c:'escucha',t:'Mostrarle que la ausencia sin explicar de una familia y la falta de traductor para los mayores son exactamente el tipo de descuido que sufren las comunidades pobres cuando alguien de afuera decide que ya fue suficiente cuidado.',fb:'Conectas directo con lo que más le importa: no permitir que se desprecie a la gente pobre.'}
+    {v:30,c:'limite',t:"Decirle que no vas a avalar un contrato firmado sin traductor independiente, y que para ti ese punto no está en discusión.",fb:"Lo oye como otra persona de afuera decidiendo por ellos. Se retrae."},
+    {v:60,c:'empatia',t:"Reconocer en voz alta lo que la escuela y el camino significan para Wenko, y pedir solo que la firma se repita con todos presentes.",fb:"Se siente reconocido y queda en el borde. Todavía le suena a postergar lo que les toca."},
+    {v:100,c:'escucha',t:"Mostrarle que la familia ausente y los mayores sin traductor son el descuido de siempre con los pobres, el que él conoce de cerca.",fb:"Conectas con lo que más le importa: que no se desprecie a la gente pobre. Ahora el argumento es suyo."}
    ]},
   {n:6,id:'artesano',nom:'El Artesano',img:'jurado-06-artesano.png',dif:'media',
    perfil:'Cuidadoso, honesto, sin necesidad de ganar. Protege a quien los demás desprecian sin que se lo pidan. Su falla es ser tan mesurado que subestima su propia certeza al decirla: suena a duda incluso cuando ya no duda.',
    arg:'Algo no le cierra del todo — el plazo, la ausencia, la traducción — pero no se siente con un argumento lo bastante sólido como para bloquear algo que la mayoría ya aprobó. Prefiere no insistir.',
    cita:'No sé. Puede que sea solo una impresión mía.',
    ops:[
-    {v:30,c:'firmeza',t:'Presionarlo con lógica dura y confrontación directa.',fb:'Lo hace retraerse más, no menos.'},
-    {v:60,c:'paciencia',t:'Sumarle un dato adicional a lo que ya sentía.',fb:'Refuerza su intuición. Sigue sin animarse a decirla en voz alta.'},
-    {v:100,c:'puentes',t:'Confirmarle que su duda ya era válida antes de que alguien más la nombrara, y ofrecerle sostenerla junto a él frente al cuarto.',fb:'No la reemplazas: la respaldas. Es protegerlo como él protege a otros.'}
+    {v:30,c:'firmeza',t:"Pedirle con calma, y sin rodeos, que tome posición ahora, porque una impresión que no se dice no le sirve a nadie en este cuarto.",fb:"Lo apuras a decidir antes de estar listo. Se retrae más."},
+    {v:60,c:'puentes',t:"Proponerle que pida dejar su reserva en el acta, sin votar en contra, para que su impresión quede registrada en alguna parte.",fb:"Le das una salida cómoda y queda en el borde: registrar una duda todavía no es votarla."},
+    {v:100,c:'vulnerabilidad',t:"Admitir frente a él que tú tampoco tienes certeza total, y que justamente por eso su impresión merece decirse en voz alta.",fb:"Le muestras que la duda también se puede sostener en público. Se anima a decirla."}
    ]},
   {n:7,id:'impaciente',nom:'El Impaciente',img:'jurado-07-impaciente.png',dif:'baja',
    perfil:'Resolutivo, práctico, no se pierde en detalles. Trata la decisión como un obstáculo entre él y otra cosa que quiere hacer. Vota por conveniencia, no por convicción, y jamás da una razón real para cambiar.',
    arg:'Esto ya se discutió bastante. Seguir dándole vueltas no cambia los hechos, solo alarga una reunión que preferiría ver terminada.',
    cita:'¿De verdad vamos a volver a empezar?',
    ops:[
-    {v:30,c:'paciencia',t:'Desplegar un argumento largo y elaborado sobre derechos.',fb:'Lo aburre. Si acaso, lo cierra más.'},
-    {v:60,c:'largoplazo',t:'Señalar que reabrir esto ahora es más rápido que lidiar después con el problema legal si el consentimiento no fue real.',fb:'Apela a su eficiencia. Parcial.'},
-    {v:100,c:'puentes',t:'Ofrecerle una salida concreta y breve: no reabrir todo el caso, solo confirmar dos datos puntuales antes de cerrar.',fb:'Satisface su necesidad de brevedad sin pedirle una paciencia que no tiene.'}
+    {v:30,c:'paciencia',t:"Repasar con él, paso por paso, cómo se construye un consentimiento libre e informado y por qué cada etapa existe por algo.",fb:"Lo aburre. Si acaso, lo cierra más."},
+    {v:60,c:'largoplazo',t:"Señalarle que verificar ahora es más rápido que lidiar dentro de un año con la demanda que llegaría si el consentimiento no fue real.",fb:"Apela a su eficiencia y cambia de voto. Su razón sigue siendo terminar pronto."},
+    {v:100,c:'limite',t:"Decirle con calma que no vas a mover tu voto, así que el camino más corto para salir de aquí es verificar los tres puntos y ya.",fb:"Le cambias la cuenta: lo que alarga la reunión es insistir contigo. Verificar se vuelve la salida rápida."}
    ]},
   {n:9,id:'sabio',nom:'El Sabio Silencioso',img:'jurado-09-sabio-silencioso.png',dif:'baja',
    perfil:'Nota lo que nadie más nota, por una atención que ya no le urge demostrar nada. Lo subestiman por su tono bajo, y eso hace que su evidencia — casi siempre un detalle pequeño — sea fácil de descartar como trivial.',
    arg:'Notó el plazo corto desde el principio, pero asumió que alguien más ya lo había considerado. No vio necesidad de ser quien insistiera en algo que nadie más parecía encontrar relevante.',
    cita:'Pensé que si importaba, alguien lo habría dicho.',
    ops:[
-    {v:30,c:'honestidad',t:'Confrontarlo directamente por su silencio.',fb:'No es su forma. Lo cierra en vez de abrirlo.'},
-    {v:60,c:'paciencia',t:'Preguntarle, con espacio, qué fue lo que notó.',fb:'Empieza a hablar.'},
-    {v:100,c:'escucha',t:'Nombrar frente al grupo algo que él probablemente ya vio — la ausencia de la familia — y preguntarle directamente qué piensa.',fb:'Validas que su atención importa. Lo activas.'}
+    {v:30,c:'conviccion',t:"Abrir con tu frase propia sobre el consentimiento y pedirle que se sume, ya que fue él quien primero notó lo del plazo.",fb:"La voz que se oye es la tuya. Él asiente y vuelve a su silencio."},
+    {v:60,c:'escucha',t:"Acercarte en un receso y preguntarle en voz baja qué notó del plazo, para que sepa que alguien sí estaba mirando lo mismo que él.",fb:"Te lo cuenta a ti y cambia su voto. Frente al grupo sigue sin decir por qué."},
+    {v:100,c:'firmeza',t:"Pedir silencio cuando el grupo quiera pasar a otra cosa y cederle el turno, sosteniendo la pausa hasta que él diga lo que vio.",fb:"Proteges el espacio que el cuarto nunca le da. Lo que notó por fin pesa."}
    ]},
   {n:10,id:'intolerante',nom:'El Intolerante',img:'jurado-10-intolerante.png',dif:'alta',
    perfil:'Seguro de sí mismo hasta el final, no esconde lo que piensa. Pero su razonamiento no parte de la evidencia sino de la categoría: descarta un argumento por quién lo dice, no por lo que dice. Confunde su certeza con perspicacia.',
    arg:'Cree, sin decirlo con esas palabras, que la comunidad no tiene la preparación para entender un contrato así de complejo, y que es mejor que el comité decida lo que más les conviene. Vota certificar sin notar la contradicción.',
    cita:'Esa gente no entiende de contratos. Por eso alguien tiene que decidir por ellos.',
    ops:[
-    {v:30,c:'empatia',t:'Recurrir a un argumento general de derechos humanos.',fb:'Lo lee como corrección política. No lo mueve.'},
-    {v:60,c:'firmeza',t:'Señalar la inconsistencia lógica: dice que no entienden, pero certifica que firmaron con conocimiento.',fb:'Lo incomoda. No lo voltea.'},
-    {v:100,c:'honestidad',t:'Nombrar el prejuicio frente al grupo, sin rodeos.',fb:'No cambia por lógica: cambia cuando queda expuesto y el cuarto le retira su respaldo.'}
+    {v:30,c:'empatia',t:"Invitarlo a ponerse en el lugar de la comunidad e imaginar qué sentiría si alguien decidiera por él lo que le conviene.",fb:"Lo lee como corrección política. Él razona desde la categoría; ponerse en el lugar del otro no está en su repertorio."},
+    {v:60,c:'firmeza',t:"Señalarle sin alzar la voz la contradicción: dice que no entienden el contrato, pero vota que lo firmaron con pleno conocimiento.",fb:"Lo incomoda. No lo voltea."},
+    {v:100,c:'honestidad',t:"Nombrar frente a todos, sin rodeos y sin insultarlo, el prejuicio que hay detrás de su voto, y preguntar quién más lo comparte.",fb:"Cambia cuando queda expuesto y el cuarto le retira su respaldo. La lógica nunca lo habría movido."}
    ]},
   {n:11,id:'defensor',nom:'El Defensor del Proceso',img:'jurado-11-defensor-proceso.png',dif:'media',
    perfil:'Cree en el mecanismo tanto como en el resultado. Sostiene al grupo frente a sus propios principios cuando los demás quieren saltárselos por cansancio. Su falla es apelar de más al principio en vez de ir al dato concreto.',
    arg:'El proceso legal, tal como está escrito, se cumplió: hubo convocatoria, hubo reunión, hubo firma. Exigir algo que la ley no pide explícitamente — como un traductor certificado — le suena a inventar un requisito nuevo a mitad de partido.',
    cita:'Las reglas son las reglas. No las que nos gustaría que fueran.',
    ops:[
-    {v:30,c:'empatia',t:'Apelar a la ética general hacia la comunidad.',fb:'No lo mueve. Para él cuenta el mecanismo, no el sentimiento.'},
-    {v:60,c:'honestidad',t:'Señalar la falta de traducción certificada como falla técnica puntual.',fb:'Empieza a dudar del formalismo.'},
-    {v:100,c:'conviccion',t:'Recordarle que el proceso que tanto defiende existe justamente para proteger a las minorías de decisiones apresuradas de una mayoría, y preguntarle si eso fue lo que pasó aquí o si solo se cumplió la forma vacía de ese principio.',fb:'Lo obligas a distinguir entre defender el mecanismo y defender lo que el mecanismo protege.'}
+    {v:30,c:'largoplazo',t:"Advertirle del precedente: si se certifica así, otras empresas van a usar este mismo atajo con otras comunidades del país.",fb:"Para él eso es especular sobre el futuro. Las reglas son las de hoy."},
+    {v:60,c:'vulnerabilidad',t:"Reconocer que la ley no exige un traductor certificado, y admitir que a ti no te alcanza con que se haya cumplido lo escrito.",fb:"Valora la franqueza y queda en el borde, dudando por primera vez del formalismo."},
+    {v:100,c:'conviccion',t:"Volver a tu frase de apertura: el proceso existe para proteger a quien tiene menos voz. Y preguntarle si aquí lo protegió.",fb:"Lo obligas a distinguir entre defender el mecanismo y defender lo que el mecanismo protege."}
    ]},
   {n:12,id:'voluble',nom:'El Voluble',img:'jurado-12-voluble.png',dif:'baja',
    perfil:'Rápido, ingenioso, capaz de ver un problema desde tres ángulos en un minuto. Pero no pesa argumentos: lee el ambiente. Confunde la flexibilidad con la apertura mental.',
    arg:'Vota certificar porque siente que así va la conversación del cuarto. No ha pesado la evidencia: ha leído el ambiente.',
    cita:'Yo voy con lo que decida la mayoría, la verdad.',
    ops:[
-    {v:30,c:'honestidad',t:'Presentar un argumento lógico sólido y objetivo.',fb:'No es su lenguaje. Lo mueve poco.'},
-    {v:60,c:'paciencia',t:'Mostrarle que el ambiente del cuarto ya empieza a cambiar.',fb:'Empieza a sentir la inclinación.'},
-    {v:100,c:'escucha',t:'Hacer visible que la mayoría ya está dudando, dándole algo social a seguir en vez de un argumento a evaluar.',fb:'Coincide con su propio mecanismo. Ganaste el voto: no cambiaste su forma de decidir.'}
+    {v:30,c:'escucha',t:"Preguntarle qué piensa él, de verdad, lejos de la presión del grupo, y escuchar con atención su respuesta antes de contestarle.",fb:"Te devuelve lo que cree que piensa el cuarto. No hay una postura propia que escuchar."},
+    {v:60,c:'conviccion',t:"Repetir tu frase con aplomo, sin titubear, porque él lee el ambiente y una voz segura también cambia la temperatura del cuarto.",fb:"Siente la inclinación y se mueve contigo, sin haber pesado nada."},
+    {v:100,c:'puentes',t:"Hacer visible que el cuarto ya se está moviendo: nombrar a los que dudan y ofrecerle sumarse a la mayoría que empieza a formarse.",fb:"Coincide con su propio mecanismo. Ganaste el voto; su forma de decidir sigue intacta."}
    ]}
  ]
 }];
@@ -599,6 +698,27 @@ function ir(id){
   document.querySelectorAll('.pantalla').forEach(s=>s.classList.remove('activa'));
   document.getElementById(id).classList.add('activa');
   window.scrollTo({top:0,behavior:'instant'});
+  actualizarMano(id);
+}
+
+/* ---------- FRANJA DE CUALIDADES (V2) ---------- */
+function pintarMano(){
+  document.getElementById('mano-chips').innerHTML=E.cualidades.map(id=>
+    `<button class="mano-chip" data-id="${id}" aria-expanded="false" onclick="verCualidadMano('${id}')">${CUAL[id]}</button>`).join('');
+  const d=document.getElementById('mano-des');d.hidden=true;d.innerHTML='';
+}
+function verCualidadMano(id){
+  const d=document.getElementById('mano-des');
+  const abierta=d.dataset.id===id&&!d.hidden;
+  document.querySelectorAll('.mano-chip').forEach(b=>b.setAttribute('aria-expanded',!abierta&&b.dataset.id===id));
+  if(abierta){d.hidden=true;d.dataset.id='';return;}
+  const c=CUALIDADES.find(x=>x.id===id);
+  d.innerHTML=`<b>${c.nom}.</b> ${c.des}`;d.dataset.id=id;d.hidden=false;
+}
+function actualizarMano(id){
+  const visible=(id==='p-sala'||id==='p-detalle')&&E.cualidades.length===3;
+  document.getElementById('mano').classList.toggle('visible',visible);
+  document.documentElement.classList.toggle('con-mano',visible);
 }
 const ruta=j=>'img/jurados/'+j.img;
 const dosDig=n=>String(n).padStart(2,'0');
@@ -614,20 +734,55 @@ function pintarCualidades(){
       <span class="des">${c.des}</span>
     </button>`).join('');
 }
+let avisoT=null;
 function alternarCualidad(id){
   const i=E.cualidades.indexOf(id);
   if(i>-1) E.cualidades.splice(i,1);
   else if(E.cualidades.length<3) E.cualidades.push(id);
+  else { avisoCualidad(); return; }
+  refrescarCualidades();
+  if(i===-1&&E.cualidades.length===3) abrirPanel();
+}
+function refrescarCualidades(){
+  const n=E.cualidades.length;
   document.querySelectorAll('.cualidad').forEach(b=>{
     const s=E.cualidades.includes(b.dataset.id);
     b.classList.toggle('sel',s);
-    b.classList.toggle('bloqueada',!s&&E.cualidades.length>=3);
+    b.classList.toggle('bloqueada',!s&&n>=3);
     b.setAttribute('aria-pressed',s);
   });
-  document.getElementById('contador-cual').textContent=E.cualidades.length+' de 3 elegidas';
-  document.getElementById('btn-cual').disabled=E.cualidades.length!==3;
+  document.querySelectorAll('#barra-cual .seg').forEach((s,k)=>s.classList.toggle('lleno',k<n));
+  document.getElementById('barra-cual').classList.toggle('completa',n===3);
+  const l=document.getElementById('contador-cual');
+  clearTimeout(avisoT);l.classList.remove('aviso');
+  l.textContent=n===3?'3 de 3 · tu mano está completa':n+' de 3 elegidas';
+  document.getElementById('btn-cual').disabled=n!==3;
 }
+function avisoCualidad(){
+  const l=document.getElementById('contador-cual');
+  l.textContent='Suelta una de tus tres para elegir otra';
+  l.classList.add('aviso');
+  clearTimeout(avisoT);
+  avisoT=setTimeout(refrescarCualidades,2200);
+}
+function abrirPanel(){
+  document.getElementById('panel-cual-chips').innerHTML=
+    E.cualidades.map(c=>`<span class="etiqueta">${CUAL[c]}</span>`).join('');
+  document.getElementById('velo-cual').classList.add('abierto');
+  setTimeout(()=>document.getElementById('btn-panel-entrar').focus({preventScroll:true}),60);
+}
+function cerrarPanel(){document.getElementById('velo-cual').classList.remove('abierto');}
+function cambiarCualidades(){
+  cerrarPanel();
+  const l=document.getElementById('contador-cual');
+  l.textContent='Toca una de tus tres para soltarla';
+  clearTimeout(avisoT);avisoT=setTimeout(refrescarCualidades,2600);
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&document.getElementById('velo-cual').classList.contains('abierto')) cambiarCualidades();
+});
 function confirmarCualidades(){
+  pintarMano();
   E.dilema=DILEMAS[Math.floor(Math.random()*DILEMAS.length)];
   pintarCaso();
   ir('p-caso');
@@ -753,7 +908,7 @@ function pintarConfrontacion(){
   const barajadas=[...j.ops].sort(()=>Math.random()-.5);
   document.getElementById('conf-opciones').innerHTML=barajadas.map(o=>`
     <button class="opcion" data-v="${o.v}" onclick="marcarContra(${o.v})">
-      <span class="etq">${CUAL[o.c]}${E.cualidades.includes(o.c)?' · <b>la tienes</b>':''}</span>
+      <span class="etq ${E.cualidades.includes(o.c)?'mia':'ajena'}">${CUAL[o.c]} · <b>${E.cualidades.includes(o.c)?'tu terreno':'prestada'}</b></span>
       ${o.t}
     </button>`).join('');
   document.getElementById('conf-confirmar').hidden=true;
@@ -774,7 +929,9 @@ function confirmarContra(){
   const jid=E.seleccion[E.indice];
   const j=E.dilema.jurados.find(x=>x.id===jid);
   const op=j.ops.find(o=>o.v===E.pendiente);
-  E.jugadas[jid]={valor:op.v,cual:op.c,texto:op.t,fb:op.fb,convence:op.v>=UMBRAL[j.dif]};
+  const propia=E.cualidades.includes(op.c);
+  const val=pesa(op.v,propia);
+  E.jugadas[jid]={valor:op.v,val,propia,cual:op.c,texto:op.t,fb:op.fb,convence:val>=UMBRAL[j.dif]};
   E.indice++;
   if(E.indice<E.seleccion.length){pintarConfrontacion();window.scrollTo({top:0,behavior:'instant'});}
   else votar();
@@ -797,16 +954,26 @@ function votar(){
       ${avatar(j)}
       <div class="txt">
         <div class="nom">${j.nom}</div>
-        <div class="est">${g.convence?'Cambió su voto':'Se mantuvo'} · inclinación ${g.valor}%</div>
-        <div class="barra"><i style="width:0%"></i></div>
+        <div class="est">${g.convence?'Cambió su voto':'Se mantuvo'} · ${g.propia?'<span class="terreno">Tu terreno le dio peso</span>':'Sonó prestado'}</div>
+        <div class="barra2">
+          <span class="t base"></span><span class="t ${g.propia?'extra':'perdida'}"></span>
+          <span class="umbral" style="left:${(UMBRAL[j.dif]/ESCALA*100).toFixed(1)}%"></span>
+        </div>
       </div></div>`;
   }).join('');
   pintarMesa(document.getElementById('mesa-votacion'),true);
   ir('p-votacion');
   setTimeout(()=>{
-    document.querySelectorAll('#voto-detalle .barra i').forEach((b,k)=>{
+    document.querySelectorAll('#voto-detalle .barra2').forEach((b,k)=>{
       const g=E.jugadas[E.seleccion[k]];
-      setTimeout(()=>b.style.width=g.valor+'%',k*130);
+      const pct=x=>(Math.min(x,ESCALA)/ESCALA*100).toFixed(1)+'%';
+      const base=b.querySelector('.base'), tramo=b.querySelector('.extra,.perdida');
+      const corte=g.propia?g.valor:g.val;          // donde termina el tramo sólido
+      tramo.style.left=pct(corte);
+      setTimeout(()=>{
+        base.style.width=pct(corte);
+        setTimeout(()=>tramo.style.width=pct(Math.abs(g.val-g.valor)),650);
+      },k*130);
     });
   },250);
 }
@@ -839,7 +1006,12 @@ function mostrarDebrief(){
   /* aciertos */
   if(ganados.length){
     h+=`<div class="bloque oro debrief-seccion"><h3>Lo que funcionó</h3><p>`;
-    h+=ganados.map(id=>`<strong>${nom(id)}.</strong> ${E.jugadas[id].fb}`).join('<br><br>');
+    h+=ganados.map(id=>{
+      const g=E.jugadas[id];
+      const sinTerreno=pesa(g.valor,false)>=UMBRAL[dif(id)];
+      const nota=g.propia&&!sinTerreno?' <span style="color:var(--teal)">Tu terreno inclinó la balanza.</span>':'';
+      return `<strong>${nom(id)}.</strong> ${g.fb}${nota}`;
+    }).join('<br><br>');
     h+=`</p></div>`;
   }
 
@@ -848,8 +1020,11 @@ function mostrarDebrief(){
     h+=`<div class="bloque carmin debrief-seccion falla"><h3>Dónde te quedaste corto</h3><p>`;
     h+=fallados.map(id=>{
       const j=d.jurados.find(x=>x.id===id);
-      const bueno=j.ops.find(o=>o.v===100);
-      return `<strong>${nom(id)}.</strong> ${E.jugadas[id].fb} Lo que sí lo habría movido: ${bueno.t.charAt(0).toLowerCase()+bueno.t.slice(1)}`;
+      const g=E.jugadas[id], bueno=j.ops.find(o=>o.v===100);
+      if(g.valor===100) return `<strong>${nom(id)}.</strong> Elegiste el argumento justo, pero desde una cualidad que no traías. Con él, eso no alcanza.`;
+      const conTerreno=!g.propia&&pesa(g.valor,true)>=UMBRAL[j.dif];
+      const falta=j.dif==='alta'&&!E.cualidades.includes(bueno.c);
+      return `<strong>${nom(id)}.</strong> ${g.fb}${conTerreno?' Si esa cualidad hubiera sido tuya, habría alcanzado.':''} Lo que sí lo habría movido: ${bueno.t.charAt(0).toLowerCase()+bueno.t.slice(1)}${falta?` Y para eso necesitabas traer ${CUAL[bueno.c].toLowerCase()}.`:''}`;
     }).join('<br><br>');
     h+=`</p></div>`;
   }
@@ -857,11 +1032,23 @@ function mostrarDebrief(){
   /* coherencia con las cualidades */
   h+=`<div class="bloque debrief-seccion"><h3>Coherencia con tu perfil</h3>`;
   if(naturales.length===0){
-    h+=`<p>Ninguno de tus siete contraargumentos salió de las cualidades que elegiste. Puede ser lectura fina del otro — leer a cada jurado y darle lo que necesita, aunque no sea tu terreno. También puede ser que hayas jugado un personaje que no eras.</p>`;
+    h+=`<p>Ninguno de tus siete contraargumentos salió de tu terreno: todo lo que dijiste llegó prestado, con menos fuerza. Puede ser lectura fina del otro — leer a cada jurado y darle lo que necesita, aunque no sea lo tuyo. También puede ser que hayas jugado un personaje que no eras.</p>`;
   } else if(naturales.length>=5){
     h+=`<p>Casi todo lo que usaste venía de tus propias cualidades. Sonaste coherente, sin fisuras. El riesgo del perfil consistente es no notar cuándo el cuarto necesitaba algo que tú no traías.</p>`;
   } else {
-    h+=`<p>${naturales.length} de tus siete movimientos salieron de tus cualidades: te salieron naturales. Los otros ${7-naturales.length} fueron apuestas fuera de tu terreno. Ese equilibrio suele ser el de quien lee al otro antes de decidir cómo hablarle.</p>`;
+    h+=`<p>${naturales.length} de tus siete movimientos salieron de tu terreno y entraron con el peso de lo que eres. Los otros ${7-naturales.length} fueron prestados. Ese equilibrio suele ser el de quien lee al otro antes de decidir cómo hablarle.</p>`;
+  }
+  /* alcance sobre los más duros (V2) */
+  const altas=d.jurados.filter(j=>j.dif==='alta');
+  const llave=j=>j.ops.find(o=>o.v===100).c;
+  const alcanza=altas.filter(j=>E.cualidades.includes(llave(j)));
+  const cierra=altas.filter(j=>!E.cualidades.includes(llave(j)));
+  if(alcanza.length===altas.length){
+    h+=`<p>Con lo que trajiste podías mover a los dos más duros del cuarto, ${altas.map(j=>j.nom).join(' y ')}. Pocas combinaciones de cualidades lo permiten.</p>`;
+  } else if(alcanza.length){
+    h+=`<p>Con lo que trajiste podías llegar a ${alcanza[0].nom}. A ${cierra[0].nom} no había forma de moverlo: lo que necesitaba era ${CUAL[llave(cierra[0])].toLowerCase()}, y no la elegiste.</p>`;
+  } else {
+    h+=`<p>Con lo que trajiste no había forma de mover a ninguno de los dos más duros, ${altas.map(j=>j.nom).join(' ni ')}. Elegir tus cualidades fue también elegir a quién podías alcanzar.</p>`;
   }
   if(mudas.length){
     h+=`<p class="sm dim">Cualidades que equipaste y nunca usaste: <strong>${mudas.map(c=>CUAL[c]).join(', ')}</strong>. Vale preguntarse si no hubo ocasión, o si no supiste reconocerla.</p>`;
@@ -895,8 +1082,8 @@ function mostrarDebrief(){
 function reiniciar(){
   E={dilema:null,cualidades:[],seleccion:[],jugadas:{},indice:0,detalle:null,pendiente:null};
   pintarCualidades();
-  document.getElementById('contador-cual').textContent='0 de 3 elegidas';
-  document.getElementById('btn-cual').disabled=true;
+  cerrarPanel();
+  refrescarCualidades();
   ir('p-portada');
 }
 

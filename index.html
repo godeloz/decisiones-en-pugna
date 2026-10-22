@@ -325,6 +325,49 @@ html.con-mano .wrap{padding-bottom:230px}
 .resultado-fila .est .terreno{color:var(--teal)}
 .leyenda-barra{font-size:.82rem;color:var(--tinta-tenue);text-align:center;margin-top:14px}
 
+/* ================= V2 · ajustes 2 ================= */
+/* progreso de la lista de siete, dentro de la mesa */
+.ficha.elegida{border-color:var(--teal-viva);opacity:1;box-shadow:0 0 10px rgba(26,188,176,.45);transform:translateY(-3px)}
+.ficha.elegida img{filter:none}
+.segs7{display:flex;gap:4px;max-width:340px;margin:9px auto 0}
+.segs7 span{flex:1;height:6px;border-radius:999px;background:rgba(22,34,31,.12);transition:background .3s}
+.segs7 span.lleno{background:var(--teal-viva)}
+.mesa-pie.completa{color:var(--teal)}
+.mesa-pie.aviso{color:var(--carmin)}
+
+/* panel de los siete */
+.panel{max-height:calc(100vh - 40px);overflow:auto}
+.panel-siete{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 6px;margin:16px 0 10px}
+.panel-siete .mini{display:flex;flex-direction:column;align-items:center;gap:5px;width:76px}
+.panel-siete .av,.panel-siete .av-falla{width:48px;height:48px;box-shadow:0 0 0 2px var(--teal-viva)}
+.panel-siete .av-falla{font-size:.9rem}
+.panel-siete .mini span{font-family:'Bebas Neue',sans-serif;font-size:.78rem;letter-spacing:.04em;line-height:1.05;text-align:center}
+.panel-mezcla{font-size:.88rem;color:var(--tinta-tenue);margin-bottom:22px}
+
+/* ícono de información y globo */
+.info-i{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;border:1.5px solid currentColor;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:.72rem;line-height:1;margin-left:7px;flex-shrink:0;letter-spacing:0}
+.mano-chip{display:inline-flex;align-items:center;font-size:.8rem;padding:5px 9px 5px 11px;letter-spacing:.05em}
+.mano-chip .info-i{margin-left:6px;width:15px;height:15px;font-size:.66rem}
+.mano-chips{gap:5px}
+.mano{padding-top:8px}
+.opcion-caja{position:relative}
+.opcion-caja .opcion{padding-right:54px}
+.btn-info{position:absolute;top:9px;right:9px;width:36px;height:36px;border-radius:50%;border:none;background:transparent;color:var(--teal);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+.btn-info .info-i{margin:0;width:21px;height:21px;font-size:.82rem}
+.btn-info:hover,.btn-info[aria-expanded="true"]{background:var(--teal-tenue)}
+.btn-info:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+.globo{position:fixed;left:16px;top:16px;z-index:80;max-width:340px;width:calc(100vw - 32px);background:var(--tarjeta);border:1px solid var(--linea);border-radius:14px;padding:14px 16px;box-shadow:0 14px 36px rgba(22,34,31,.2);font-size:.92rem;line-height:1.5;color:var(--tinta);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .2s,transform .2s,visibility .2s}
+.globo.abierto{opacity:1;visibility:visible;transform:none}
+.globo b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:1.08rem;letter-spacing:.06em;color:var(--teal);margin-bottom:3px}
+.globo .tuya{font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:.74rem;color:var(--tinta-tenue);display:block;margin-top:9px}
+
+/* efecto de la cualidad en cada opción */
+.opcion .etq.mia{color:var(--teal)}
+.opcion .efecto{display:block;font-family:'Bebas Neue',sans-serif;font-size:.8rem;letter-spacing:.12em;margin:-2px 0 9px}
+.opcion .efecto.mas{color:var(--teal)}
+.opcion .efecto.menos{color:var(--tinta-tenue)}
+.regla-conf{font-size:.93rem;font-style:italic;color:var(--teal);border-left:3px solid var(--teal-viva);padding-left:12px;margin:0 0 14px}
+
 @media(min-width:640px){
   body{font-size:17px}
   .rejilla{grid-template-columns:repeat(3,1fr);gap:14px}
@@ -465,6 +508,7 @@ html.con-mano .wrap{padding-bottom:230px}
   <div class="bloque carmin"><h3 style="color:var(--carmin)">Su argumento</h3><p id="conf-argumento"></p></div>
   <h3 style="margin:22px 0 4px">¿Cómo cambiarías su decisión?</h3>
   <p class="dim sm" style="margin-bottom:12px">Elige un solo contraargumento. Los tres inclinan algo. Solo uno lo mueve del todo.</p>
+  <p class="regla-conf">Si el argumento nace de una de tus cualidades, entra con más fuerza. Si no, con menos.</p>
   <div class="aviso">Intervienes una sola vez con cada jurado. Cuando confirmes, no hay segunda confrontación.</div>
   <div class="opciones" id="conf-opciones"></div>
   <div class="acciones" id="conf-confirmar" hidden>
@@ -504,7 +548,7 @@ html.con-mano .wrap{padding-bottom:230px}
 <!-- V2 · panel que emerge al completar las cualidades -->
 <div class="velo" id="velo-cual" onclick="if(event.target===this)cambiarCualidades()">
   <div class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-cual-tit">
-    <span class="eyebrow teal">Tu mano está completa</span>
+    <span class="eyebrow teal">Tus tres cualidades</span>
     <h3 id="panel-cual-tit">Entras al cuarto con</h3>
     <div class="etiquetas" id="panel-cual-chips"></div>
     <div class="acciones">
@@ -514,12 +558,28 @@ html.con-mano .wrap{padding-bottom:230px}
   </div>
 </div>
 
+<!-- V2 · panel que emerge al completar los siete -->
+<div class="velo" id="velo-sel" onclick="if(event.target===this)cambiarSeleccion()">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-sel-tit">
+    <span class="eyebrow carmin">Tu lista está completa</span>
+    <h3 id="panel-sel-tit">Vas a confrontar a</h3>
+    <div class="panel-siete" id="panel-sel-lista"></div>
+    <p class="panel-mezcla" id="panel-sel-mezcla"></p>
+    <div class="acciones">
+      <button class="btn oro" id="btn-panel-confrontar" onclick="cerrarPanelSel();iniciarConfrontacion()">Confrontar a los siete</button>
+      <button class="btn fantasma" onclick="cambiarSeleccion()">Cambiar mi elección</button>
+    </div>
+  </div>
+</div>
+
+<!-- V2 · globo con la descripción de una cualidad -->
+<div class="globo" id="globo" role="tooltip"></div>
+
 <!-- V2 · franja con tus cualidades en la sala y la ficha -->
 <div class="mano" id="mano" aria-label="Tus cualidades">
   <div class="mano-int">
-    <div class="mano-tit">Tus cualidades · toca una para releerla</div>
+    <div class="mano-tit">Tus cualidades</div>
     <div class="mano-chips" id="mano-chips"></div>
-    <div class="mano-des" id="mano-des" hidden></div>
   </div>
 </div>
 
@@ -699,22 +759,39 @@ function ir(id){
   document.getElementById(id).classList.add('activa');
   window.scrollTo({top:0,behavior:'instant'});
   actualizarMano(id);
+  if(typeof cerrarGlobo==='function') cerrarGlobo();
 }
 
 /* ---------- FRANJA DE CUALIDADES (V2) ---------- */
 function pintarMano(){
   document.getElementById('mano-chips').innerHTML=E.cualidades.map(id=>
-    `<button class="mano-chip" data-id="${id}" aria-expanded="false" onclick="verCualidadMano('${id}')">${CUAL[id]}</button>`).join('');
-  const d=document.getElementById('mano-des');d.hidden=true;d.innerHTML='';
+    `<button class="mano-chip" data-id="${id}" aria-expanded="false" aria-label="${CUAL[id]}: ver en qué consiste" onclick="abrirGlobo(this,'${id}')">${CUAL[id]}<span class="info-i" aria-hidden="true">i</span></button>`).join('');
 }
-function verCualidadMano(id){
-  const d=document.getElementById('mano-des');
-  const abierta=d.dataset.id===id&&!d.hidden;
-  document.querySelectorAll('.mano-chip').forEach(b=>b.setAttribute('aria-expanded',!abierta&&b.dataset.id===id));
-  if(abierta){d.hidden=true;d.dataset.id='';return;}
+
+/* ---------- GLOBO DE INFORMACIÓN (V2) ---------- */
+let globoDe=null;
+function abrirGlobo(btn,id){
+  const g=document.getElementById('globo');
+  if(globoDe===btn){cerrarGlobo();return;}
   const c=CUALIDADES.find(x=>x.id===id);
-  d.innerHTML=`<b>${c.nom}.</b> ${c.des}`;d.dataset.id=id;d.hidden=false;
+  g.innerHTML=`<b>${c.nom}</b>${c.des}<span class="tuya">${E.cualidades.includes(id)?'Es una de tus cualidades':'No es una de tus cualidades'}</span>`;
+  document.querySelectorAll('.mano-chip,.btn-info').forEach(b=>b.setAttribute('aria-expanded',b===btn));
+  const r=btn.getBoundingClientRect(), gw=g.offsetWidth, gh=g.offsetHeight;
+  const left=Math.min(Math.max(16,r.left+r.width/2-gw/2),innerWidth-gw-16);
+  let top=r.top-gh-10; if(top<16) top=r.bottom+10;
+  g.style.left=left+'px'; g.style.top=top+'px';
+  g.classList.add('abierto'); globoDe=btn;
 }
+function cerrarGlobo(){
+  document.getElementById('globo').classList.remove('abierto');
+  document.querySelectorAll('.mano-chip,.btn-info').forEach(b=>b.setAttribute('aria-expanded','false'));
+  globoDe=null;
+}
+document.addEventListener('click',e=>{
+  if(globoDe&&!e.target.closest('#globo,.btn-info,.mano-chip')) cerrarGlobo();
+});
+window.addEventListener('scroll',()=>{if(globoDe)cerrarGlobo();},{passive:true});
+window.addEventListener('resize',()=>{if(globoDe)cerrarGlobo();});
 function actualizarMano(id){
   const visible=(id==='p-sala'||id==='p-detalle')&&E.cualidades.length===3;
   document.getElementById('mano').classList.toggle('visible',visible);
@@ -755,7 +832,7 @@ function refrescarCualidades(){
   document.getElementById('barra-cual').classList.toggle('completa',n===3);
   const l=document.getElementById('contador-cual');
   clearTimeout(avisoT);l.classList.remove('aviso');
-  l.textContent=n===3?'3 de 3 · tu mano está completa':n+' de 3 elegidas';
+  l.textContent=n===3?'3 de 3 · listo para entrar':n+' de 3 elegidas';
   document.getElementById('btn-cual').disabled=n!==3;
 }
 function avisoCualidad(){
@@ -779,7 +856,10 @@ function cambiarCualidades(){
   clearTimeout(avisoT);avisoT=setTimeout(refrescarCualidades,2600);
 }
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'&&document.getElementById('velo-cual').classList.contains('abierto')) cambiarCualidades();
+  if(e.key!=='Escape') return;
+  if(globoDe){cerrarGlobo();return;}
+  if(document.getElementById('velo-cual').classList.contains('abierto')) cambiarCualidades();
+  if(document.getElementById('velo-sel').classList.contains('abierto')) cambiarSeleccion();
 });
 function confirmarCualidades(){
   pintarMano();
@@ -814,7 +894,7 @@ function cambiarCaso(){
 }
 
 /* ---------- MESA (elemento firma) ---------- */
-function pintarMesa(cont,revelar){
+function pintarMesa(cont,revelar,eleccion){
   const d=E.dilema, orden=[];
   d.jurados.forEach(j=>{if(j.n<8)orden.push(j)});
   orden.push('yo');
@@ -822,8 +902,16 @@ function pintarMesa(cont,revelar){
   const fichas=orden.map(j=>{
     if(j==='yo') return `<div class="ficha yo" title="Tú · El Inconforme"><img src="img/jurados/jurado-08-inconforme.png" alt="Tú" onerror="this.style.display='none'"></div>`;
     const ganado=revelar&&E.jugadas[j.id]&&E.jugadas[j.id].convence;
-    return `<div class="ficha ${ganado?'favor':''}" title="${j.nom}"><img src="${ruta(j)}" alt="${j.nom}" onerror="this.style.display='none'"></div>`;
+    const elegida=eleccion&&E.seleccion.includes(j.id);
+    return `<div class="ficha ${ganado?'favor':''}${elegida?' elegida':''}" title="${j.nom}"><img src="${ruta(j)}" alt="${j.nom}" onerror="this.style.display='none'"></div>`;
   }).join('');
+  if(eleccion){
+    const k=E.seleccion.length;
+    cont.innerHTML=`<div class="mesa-fila">${fichas}</div>
+      <div class="segs7" aria-hidden="true">${Array.from({length:7},(_,i)=>`<span class="${i<k?'lleno':''}"></span>`).join('')}</div>
+      <div class="mesa-pie ${k===7?'completa':''}" aria-live="polite">${k===7?'7 de 7 · tu lista está completa':`<b>${k}</b> de 7 elegidos`}</div>`;
+    return;
+  }
   const n=revelar?Object.values(E.jugadas).filter(x=>x.convence).length:0;
   cont.innerHTML=`<div class="mesa-fila">${fichas}</div>
     <div class="mesa-pie">Votos a tu favor · <b>${n+1}</b> de 12</div>`;
@@ -832,7 +920,7 @@ function pintarMesa(cont,revelar){
 /* ---------- SALA ---------- */
 function abrirSala(){pintarSala();ir('p-sala');}
 function pintarSala(){
-  pintarMesa(document.getElementById('mesa-sala'),false);
+  pintarMesa(document.getElementById('mesa-sala'),false,true);
   document.getElementById('rejilla-sala').innerHTML=E.dilema.jurados.map(j=>{
     const sel=E.seleccion.includes(j.id);
     const lleno=!sel&&E.seleccion.length>=7;
@@ -856,6 +944,25 @@ function alternarJurado(id){
   if(i>-1) E.seleccion.splice(i,1);
   else if(E.seleccion.length<7) E.seleccion.push(id);
   pintarSala();
+  if(i===-1&&E.seleccion.length===7) abrirPanelSel();
+}
+function abrirPanelSel(){
+  const js=E.seleccion.map(id=>E.dilema.jurados.find(x=>x.id===id));
+  document.getElementById('panel-sel-lista').innerHTML=js.map(j=>`<div class="mini">${avatar(j)}<span>${j.nom}</span></div>`).join('');
+  const c=d=>js.filter(j=>j.dif===d).length;
+  document.getElementById('panel-sel-mezcla').textContent=`${c('baja')} de resistencia baja · ${c('media')} media · ${c('alta')} alta`;
+  cerrarGlobo();
+  document.getElementById('velo-sel').classList.add('abierto');
+  setTimeout(()=>document.getElementById('btn-panel-confrontar').focus({preventScroll:true}),60);
+}
+function cerrarPanelSel(){document.getElementById('velo-sel').classList.remove('abierto');}
+let avisoSelT=null;
+function cambiarSeleccion(){
+  cerrarPanelSel();
+  const pie=document.querySelector('#mesa-sala .mesa-pie');
+  if(pie){pie.textContent='Quita a uno para elegir a otro';pie.classList.remove('completa');pie.classList.add('aviso');}
+  clearTimeout(avisoSelT);
+  avisoSelT=setTimeout(()=>{if(document.getElementById('p-sala').classList.contains('activa'))pintarMesa(document.getElementById('mesa-sala'),false,true);},2600);
 }
 function actualizarSeleccion(){
   document.getElementById('contador-sel').textContent=E.seleccion.length+' de 7 elegidos';
@@ -887,6 +994,7 @@ function alternarDesdeDetalle(){
   else if(E.seleccion.length<7) E.seleccion.push(E.detalle);
   pintarSala();
   ir('p-sala');
+  if(i===-1&&E.seleccion.length===7) abrirPanelSel();
 }
 
 /* ---------- CONFRONTACIÓN ---------- */
@@ -906,11 +1014,16 @@ function pintarConfrontacion(){
     <span class="dif ${j.dif}">Resistencia ${j.dif}</span></div>`;
   document.getElementById('conf-argumento').textContent=j.arg;
   const barajadas=[...j.ops].sort(()=>Math.random()-.5);
-  document.getElementById('conf-opciones').innerHTML=barajadas.map(o=>`
-    <button class="opcion" data-v="${o.v}" onclick="marcarContra(${o.v})">
-      <span class="etq ${E.cualidades.includes(o.c)?'mia':'ajena'}">${CUAL[o.c]} · <b>${E.cualidades.includes(o.c)?'tu terreno':'prestada'}</b></span>
-      ${o.t}
-    </button>`).join('');
+  document.getElementById('conf-opciones').innerHTML=barajadas.map(o=>{
+    const mia=E.cualidades.includes(o.c);
+    return `<div class="opcion-caja">
+      <button class="opcion" data-v="${o.v}" onclick="marcarContra(${o.v})">
+        <span class="etq ${mia?'mia':'ajena'}">${CUAL[o.c]}</span>
+        <span class="efecto ${mia?'mas':'menos'}">${mia?'&#9650; Tu cualidad · más fuerza':'&#9660; Cualidad ajena · menos fuerza'}</span>
+        ${o.t}
+      </button>
+      <button class="btn-info" aria-expanded="false" aria-label="${CUAL[o.c]}: ver en qué consiste" onclick="abrirGlobo(this,'${o.c}')"><span class="info-i" aria-hidden="true">i</span></button>
+    </div>`;}).join('');
   document.getElementById('conf-confirmar').hidden=true;
 }
 function marcarContra(valor){
@@ -954,7 +1067,7 @@ function votar(){
       ${avatar(j)}
       <div class="txt">
         <div class="nom">${j.nom}</div>
-        <div class="est">${g.convence?'Cambió su voto':'Se mantuvo'} · ${g.propia?'<span class="terreno">Tu terreno le dio peso</span>':'Sonó prestado'}</div>
+        <div class="est">${g.convence?'Cambió su voto':'Se mantuvo'} · ${g.propia?'<span class="terreno">Tu cualidad le dio fuerza</span>':'Cualidad ajena: le restó fuerza'}</div>
         <div class="barra2">
           <span class="t base"></span><span class="t ${g.propia?'extra':'perdida'}"></span>
           <span class="umbral" style="left:${(UMBRAL[j.dif]/ESCALA*100).toFixed(1)}%"></span>
@@ -1009,7 +1122,7 @@ function mostrarDebrief(){
     h+=ganados.map(id=>{
       const g=E.jugadas[id];
       const sinTerreno=pesa(g.valor,false)>=UMBRAL[dif(id)];
-      const nota=g.propia&&!sinTerreno?' <span style="color:var(--teal)">Tu terreno inclinó la balanza.</span>':'';
+      const nota=g.propia&&!sinTerreno?' <span style="color:var(--teal)">Tu cualidad le dio la fuerza que faltaba.</span>':'';
       return `<strong>${nom(id)}.</strong> ${g.fb}${nota}`;
     }).join('<br><br>');
     h+=`</p></div>`;
@@ -1032,11 +1145,11 @@ function mostrarDebrief(){
   /* coherencia con las cualidades */
   h+=`<div class="bloque debrief-seccion"><h3>Coherencia con tu perfil</h3>`;
   if(naturales.length===0){
-    h+=`<p>Ninguno de tus siete contraargumentos salió de tu terreno: todo lo que dijiste llegó prestado, con menos fuerza. Puede ser lectura fina del otro — leer a cada jurado y darle lo que necesita, aunque no sea lo tuyo. También puede ser que hayas jugado un personaje que no eras.</p>`;
+    h+=`<p>Ninguno de tus siete contraargumentos salió de tus cualidades: todo lo que dijiste vino de cualidades ajenas y entró con menos fuerza. Puede ser lectura fina del otro — leer a cada jurado y darle lo que necesita, aunque no sea lo tuyo. También puede ser que hayas jugado un personaje que no eras.</p>`;
   } else if(naturales.length>=5){
     h+=`<p>Casi todo lo que usaste venía de tus propias cualidades. Sonaste coherente, sin fisuras. El riesgo del perfil consistente es no notar cuándo el cuarto necesitaba algo que tú no traías.</p>`;
   } else {
-    h+=`<p>${naturales.length} de tus siete movimientos salieron de tu terreno y entraron con el peso de lo que eres. Los otros ${7-naturales.length} fueron prestados. Ese equilibrio suele ser el de quien lee al otro antes de decidir cómo hablarle.</p>`;
+    h+=`<p>${naturales.length} de tus siete movimientos salieron de tus cualidades y entraron con más fuerza. Los otros ${7-naturales.length} vinieron de cualidades ajenas. Ese equilibrio suele ser el de quien lee al otro antes de decidir cómo hablarle.</p>`;
   }
   /* alcance sobre los más duros (V2) */
   const altas=d.jurados.filter(j=>j.dif==='alta');
@@ -1082,7 +1195,7 @@ function mostrarDebrief(){
 function reiniciar(){
   E={dilema:null,cualidades:[],seleccion:[],jugadas:{},indice:0,detalle:null,pendiente:null};
   pintarCualidades();
-  cerrarPanel();
+  cerrarPanel();cerrarPanelSel();cerrarGlobo();
   refrescarCualidades();
   ir('p-portada');
 }
